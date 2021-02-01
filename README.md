@@ -20,11 +20,11 @@ In this unit, coders will work in groups to build a project using HTML, CSS, Rea
 
 ### Goal 2: Render a "Next Question" button on the screen.
 
-- [] need to merge with Ryan's project
+- [x] need to merge with Ryan's project
 
-- [ ] In App.jsx, create a NextQuestion component.
-- [ ] Write the JSX to display a button for the user to click for the next question. (It will not work yet.)
-- [ ] Render `<NextQuestion />` inside of App.
+- [x] In App.jsx, create a NextQuestion component.
+- [x] Write the JSX to display a button for the user to click for the next question. (It will not work yet.)
+- [x] Render `<NextQuestion />` inside of App.
 
 > ![Day 1.5 goal](https://i.imgur.com/o4MzPjL.png)
 
