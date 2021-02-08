@@ -1,68 +1,58 @@
 import React, { Component, useState } from "react";
+import { isPropertySignature } from "typescript";
 import "../css/App.css";
 import data from "../sample_data.json";
 
-// ## Goal 1: Render the answer choices from sample_data.json on the screen.
+//- [ ] Pass props for the answer choices into `<Question />`.
+// let pieFlavor = ["blueberry", "pumpkin", "chocolate"];
 
-// - [x] In App.jsx, create an Answer component.
-// - [x] Add props to `<Answer />` with the text "Answer goes here".
-// - [x] Render `<Answer />` inside of `<Question />`.
-//  - [ ] Pass props for the answer choices into `<Question />`.
-//  - [ ] Use those props to render the Answer components inside `<Question />` to display the answer choices.
-// - [ ] Refactor to use map to map over all answer choices.
-function Question(props) {
+// let dessert = pieFlavor.map((flavor) => {
+// 	return flavor + " pie with whipped cream";
+// });
+
+export function Question(props) {
   return (
     <div>
-      <p> {props.text} </p>
-      <Answer text={"answer A"} />
-      <Answer text={"answer B"} />
-      <Answer text={"answer C"} />
+      <div>{props.question}</div>
+      {props.answer.map((answer) => {
+        return <Answer answer={answer} />;
+      })}
     </div>
   );
 }
+
+export function NextQuestion(props) {
+  return <button>Next Question</button>;
+}
+
+export function CorrectAnswer(props) {
+  return <button>Correct Answer</button>;
+}
+
+export function Answer(props) {
+  return <div> {props.answer} </div>;
+}
+// is this okay
+
+let questnum = 0;
 
 function App() {
-  let currentquestion = 0;
   return (
     <div className="app">
+      Trivia!
       <Question
-        text={data[currentquestion].question.choices}
-        choices={data[currentquestion].question.choices}
+        question={data[questnum].question.text}
+        answer={["ChoiceA", "ChoiceB", "ChoiceC", "ChoiceD"]}
       />
+      {/* <Question question="question two goes here" answer=["my other answer"] /> */}
       <NextQuestion />
+      <CorrectAnswer />
     </div>
   );
 }
 
-function NextQuestion() {
-  return (
-    <div className="app">
-      <button>A BUTTON! (next question)</button>
-    </div>
-  );
-}
-function Answer(props) {
-  return (
-    <div>
-      <p>{props.text}</p>
-    </div>
-  );
-}
 export default App;
 
-// import React from "react";
-
-// function GreetByName(props) { <- Accepting and using props
-
-// return <div>Hello {props.name}!</div>;
-// }
-
-// function App() {
-// return (
-// <div className="App">
-// 		<GreetByName name="Jared" /> <- Passing a prop "name" with value "Jared"
-// </div>
-// );
-// }
-
-// export default App;
+// These are equivalent:
+// <button></button>
+// <button />
